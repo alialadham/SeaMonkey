@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #031923;
+}
+
+body {
+  margin: 0;
+  background: #031923;
+  color: #f8f3e8;
+  font-family:
+    Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  letter-spacing: 0;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+@layer components {
+  .section-shell {
+    @apply overflow-hidden py-20 md:py-28;
+  }
+
+  .btn-gold {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] bg-gold px-6 py-3 text-sm font-bold text-ink shadow-gold transition hover:-translate-y-0.5 hover:bg-sand;
+  }
+
+  .btn-ghost {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-[8px] border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-gold hover:text-gold;
+  }
+
+  .btn-dark {
+    @apply inline-flex min-h-12 items-center justify-center rounded-[8px] bg-ink px-6 py-3 text-sm font-bold text-white shadow-xl shadow-ink/20 transition hover:-translate-y-0.5 hover:bg-ocean;
+  }
+
+  .btn-outline-dark {
+    @apply inline-flex min-h-12 items-center justify-center rounded-[8px] border border-ink/20 px-6 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5 hover:border-olive hover:text-olive;
+  }
+
+  .field-label {
+    @apply grid gap-2 text-sm font-bold text-ink;
+  }
+
+  .field-input {
+    @apply rounded-[8px] border border-ink/[0.12] bg-white px-4 py-3 text-base text-ink outline-none transition placeholder:text-ink/35 focus:border-gold focus:ring-4 focus:ring-gold/20;
+  }
+
+  .contact-link {
+    @apply flex items-center gap-3 rounded-[8px] border border-white/10 bg-white/[0.06] px-4 py-4 text-sm font-semibold text-parchment transition hover:border-gold/50 hover:text-gold;
+  }
+
+  .footer-link {
+    @apply flex items-center gap-3 text-sm text-white/[0.66] transition hover:text-gold;
+  }
+
+  .detail-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 font-semibold text-white backdrop-blur-md;
+  }
+
+  .journal-prose {
+    @apply text-lg leading-9 text-parchment/[0.78];
+  }
+
+  .journal-prose p {
+    @apply my-6;
+  }
+
+  .journal-prose .journal-lede {
+    @apply mt-0 text-xl leading-9 text-parchment md:text-2xl md:leading-10;
+  }
+
+  .journal-prose blockquote {
+    @apply my-12 border-l-2 border-gold pl-6 font-display text-3xl font-semibold leading-tight text-white md:text-5xl;
+  }
+
+  .journal-editorial-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .reviews-marquee {
+    @apply flex w-max gap-5;
+    animation: reviews-marquee 42s linear infinite;
+  }
+
+  .reviews-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .review-marquee-card {
+    @apply w-[82vw] max-w-[360px] shrink-0 rounded-[8px] bg-white/[0.055] p-5 shadow-xl shadow-black/10 md:w-[360px];
+  }
+
+  .font-display {
+    @apply font-bold;
+  }
+}
+
+@keyframes reviews-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-marquee {
+    animation: none;
+    @apply w-auto flex-wrap justify-center;
+  }
+}
