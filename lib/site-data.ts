@@ -52,18 +52,15 @@ export function whatsappFeedbackLink({
 }
 
 export const assets = {
-  // Uploaded SeaMonkey logo from WhatsApp, 2026-06-07.
+  // Approved local SeaMonkey logo fallback from the official brand asset.
   logo: "/assets/uploads/seamonkey-logo.jpg",
   // Replace hero video here.
   heroVideo: "/videos/seamonkey-hero.mp4",
   // Replace poster image with a compressed, owned hero still for production.
-  heroPoster:
-    "https://seamonkeynetwork.com/wp-content/uploads/2024/03/WE-like.00_09_45_10.Still034-min.jpg",
-  aboutPrimary: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
-  aboutSecondary:
-    "https://seamonkeynetwork.com/wp-content/uploads/2024/03/WE-like.00_11_51_22.Still042-1-1.jpg",
-  aboutTertiary:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/09/Sequence-03.00_03_00_36.Still011-1-1024x576.jpg",
+  heroPoster: "/assets/seamonkey/red-sea-coral.jpeg",
+  aboutPrimary: "/assets/seamonkey/water-buffalo-reeds.jpeg",
+  aboutSecondary: "/assets/seamonkey/arabian-oryx-herd.jpeg",
+  aboutTertiary: "/assets/seamonkey/red-sea-turtle.jpeg",
 };
 
 export type GalleryItem = {
@@ -80,73 +77,63 @@ export const galleryItems: GalleryItem[] = [
     title: "Arabian oryx",
     location: "Azraq",
     href: "/expeditions/arabian-oryx-photography-safari",
-    image: "/assets/uploads/arabian-oryx-upload.jpeg",
+    image: "/assets/seamonkey/arabian-oryx-herd.jpeg",
     size: "wide",
   },
   {
     title: "Burrowing owl",
     location: "Southern trails",
     href: "/expeditions/camp-in-the-wild",
-    image: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/sea-2-2.jpg",
+    image: "/assets/seamonkey/burrowing-owl.jpeg",
     size: "square",
   },
   {
     title: "Red Sea turtle",
     location: "Aqaba",
     href: "/expeditions/scuba-dive-snorkel-cruise-red-sea",
-    // Replace with an uploaded/approved Red Sea image when supplied.
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2023/08/Turtle-1-1024x566.jpg",
+    image: "/assets/seamonkey/red-sea-turtle.jpeg",
     size: "tall",
   },
   {
     title: "Night dive marine life",
     location: "Aqaba",
     href: "/expeditions/night-dive",
-    // Replace with an uploaded/approved night dive image when supplied.
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2023/09/Screenshot-2023-07-26-at-2.14.11-PM-min-1-1024x631.png",
+    image: "/assets/seamonkey/night-dive-octopus.jpeg",
     size: "wide",
   },
   {
     title: "Rock hyrax",
     location: "Tafilah",
     href: "/expeditions/hike-in-the-wild",
-    // Replace with an official SeaMonkey rock hyrax close-up when published.
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2023/08/A0746BD8-3C31-404F-A8BD-9A8146AEB0CC-1.jpg",
+    image: "/assets/seamonkey/rock-hyrax.jpeg",
     size: "square",
   },
   {
     title: "Water buffalo",
     location: "Azraq wetlands",
     href: "/expeditions/water-buffalo-birdwatching-trek",
-    image: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
+    image: "/assets/seamonkey/water-buffalo-reeds.jpeg",
     size: "square",
   },
   {
     title: "Azraq wetlands",
     location: "Eastern Jordan",
     href: "/expeditions/water-buffalo-birdwatching-trek",
-    image: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
+    image: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
     size: "tall",
   },
   {
     title: "Tafilah mountains",
     location: "Dana region",
     href: "/expeditions/hike-in-the-wild",
-    // Replace with an uploaded/approved hiking image when supplied.
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2024/03/hikeinwild1-1.jpg",
+    image: "/assets/seamonkey/dana-mountains.jpeg",
     size: "square",
   },
   {
     title: "Aqaba coral reefs",
     location: "Red Sea",
     href: "/expeditions/scuba-dive-snorkel-cruise-red-sea",
-    // Replace with an uploaded/approved Red Sea image when supplied.
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2024/03/MARINE-1-1.png",
+    image: "/assets/seamonkey/red-sea-coral.jpeg",
     size: "wide",
   },
 ];
@@ -170,7 +157,7 @@ export const faqs = [
   {
     question: "What should I wear?",
     answer:
-      "Wear sturdy outdoor clothing, sun protection, and trail shoes for hikes. Sea trips need swimwear, towels, and a light layer for the boat.",
+      "Wear sturdy outdoor clothing, sun protection, and trail shoes for hikes. Sea trips need towels and a light layer for the boat.",
   },
   {
     question: "Can solo travelers join?",

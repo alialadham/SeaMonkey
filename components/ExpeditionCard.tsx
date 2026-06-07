@@ -23,6 +23,10 @@ const accentIcons = {
   bird: Bird,
 };
 
+const expeditionIconOverrides = {
+  "water-buffalo-birdwatching-trek": PawPrint,
+};
+
 const adventureLabels: Record<string, string> = {
   "arabian-oryx-photography-safari": "Arabian Oryx",
   "scuba-dive-snorkel-cruise-red-sea": "Scuba Diving",
@@ -38,7 +42,10 @@ type ExpeditionCardProps = {
 };
 
 export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
-  const AccentIcon = accentIcons[expedition.accent];
+  const AccentIcon =
+    expeditionIconOverrides[
+      expedition.slug as keyof typeof expeditionIconOverrides
+    ] ?? accentIcons[expedition.accent];
   const adventureLabel = adventureLabels[expedition.slug] ?? expedition.title;
 
   return (

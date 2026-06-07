@@ -54,10 +54,10 @@ const journalDrafts: JournalDraft[] = [
     locationLabel: "Azraq Wetland Reserve",
     theme: "wetlands",
     quote: "Let's make memories and a difference!",
-    heroImage: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
+    heroImage: "/assets/seamonkey/water-buffalo-reeds.jpeg",
     pdfImages: [
       {
-        src: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
+        src: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
         alt: "Water buffalo and bird watching field image",
         page: 2,
         source: "Buffalo PDF.pdf",
@@ -140,10 +140,10 @@ Thank you for choosing us to guide you on this incredible journey of wetland exp
     theme: "dana",
     quote:
       "Together, we will explore the wonders of this extraordinary desert landscape, appreciate its remarkable inhabitants, and actively contribute to their conservation.",
-    heroImage: "/assets/journal-pdf/camp-in-the-wild-2-1-f93aee5d6b19.jpg",
+    heroImage: "/assets/seamonkey/dana-mountains.jpeg",
     pdfImages: [
       {
-        src: "/assets/journal-pdf/camp-in-the-wild-2-1-f93aee5d6b19.jpg",
+        src: "/assets/seamonkey/rock-hyrax.jpeg",
         alt: "Camp in the Wild field image",
         page: 2,
         source: "Camp PDF.pdf",
@@ -224,11 +224,10 @@ Thank you for choosing us to guide you on this incredible journey of outdoor exp
     theme: "redsea",
     quote:
       "These resilient corals offer hope through artiﬁcial evolution techniques, potentially increasing the overall resilience of coral reefs globally.",
-    heroImage:
-      "/assets/journal-pdf/scuba-dive-snorkel-cruise-red-sea-3-1-45c7e3527016.jpg",
+    heroImage: "/assets/seamonkey/red-sea-coral.jpeg",
     pdfImages: [
       {
-        src: "/assets/journal-pdf/scuba-dive-snorkel-cruise-red-sea-3-1-45c7e3527016.jpg",
+        src: "/assets/seamonkey/red-sea-turtle.jpeg",
         alt: "Scuba dive Red Sea field image",
         page: 3,
         source: "Dive PDF.pdf",
@@ -314,7 +313,7 @@ conservation!`,
       },
     ],
   },
-  // Source: Hike PDF.pdf. No embedded source image was extractable; replace heroImage with an approved local image when supplied.
+  // Source: Hike PDF.pdf.
   {
     slug: "hike-in-the-wild-tafilah",
     expeditionSlug: "hike-in-the-wild",
@@ -329,7 +328,15 @@ conservation!`,
     theme: "hike",
     quote:
       "Together, we will uncover the wonders of this extraordinary desert landscape, appreciate its remarkable inhabitants, and actively contribute to their conservation.",
-    pdfImages: [],
+    heroImage: "/assets/seamonkey/dana-mountains.jpeg",
+    pdfImages: [
+      {
+        src: "/assets/seamonkey/rock-hyrax.jpeg",
+        alt: "Rock hyrax in Dana mountain habitat",
+        page: 1,
+        source: "Hike PDF.pdf",
+      },
+    ],
     pdfPages: [
       {
         page: 1,
@@ -409,10 +416,10 @@ Stay connected with us on social media:
     theme: "oryx",
     quote:
       "Preserving the Arabian oryx and its habitat is not only essential for maintaining the health and balance of the ecosystem but also for cultural heritage, tourism, and the overall well-being of the region.",
-    heroImage: "/assets/uploads/arabian-oryx-upload.jpeg",
+    heroImage: "/assets/seamonkey/arabian-oryx-herd.jpeg",
     pdfImages: [
       {
-        src: "/assets/uploads/arabian-oryx-upload.jpeg",
+        src: "/assets/seamonkey/oryx-safari-vehicle.jpeg",
         alt: "Arabian oryx field image",
         page: 3,
         source: "Oryx PDF.pdf",
@@ -498,10 +505,10 @@ Thank you for choosing us to guide you on this incredible journey of outdoor exp
     theme: "night",
     quote:
       "We are dedicated to sustainable diving practices that minimize our impact on the underwater environment, ensuring future generations can also experience the magic of night dives.",
-    heroImage: "/assets/journal-pdf/night-dive-2-1-29e2965dc4a9.jpg",
+    heroImage: "/assets/seamonkey/night-dive-octopus.jpeg",
     pdfImages: [
       {
-        src: "/assets/journal-pdf/night-dive-2-1-29e2965dc4a9.jpg",
+        src: "/assets/seamonkey/night-dive-octopus.jpeg",
         alt: "Night dive field image",
         page: 2,
         source: "Night Dive PDF.pdf",

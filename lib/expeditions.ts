@@ -37,38 +37,27 @@ export type Expedition = {
 
 const officialImages = {
   // Uploaded SeaMonkey assets from 2026-06-07.
-  oryxHero: "/assets/uploads/arabian-oryx-upload.jpeg",
-  oryxDetail: "/assets/uploads/arabian-oryx-upload.jpeg",
-  oryxSecond: "/assets/uploads/arabian-oryx-upload.jpeg",
-  buffaloHero: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
-  buffaloDetail: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
-  birds: "/assets/uploads/water-buffalo-wetland-upload.jpeg",
-  // No matching uploaded Red Sea, night dive, hiking, or camping photos were supplied in this batch.
-  // Replace the remote URLs below with approved local assets when available.
-  turtle: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/Turtle-1.jpg",
-  marine: "https://seamonkeynetwork.com/wp-content/uploads/2024/03/MARINE-1-1.png",
-  plane: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/plane-25.jpg",
-  hikeHero: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/sea-2-2.jpg",
-  hikeTrail:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/08/WE-like.00_19_36_17.Still067.jpg",
-  hikePortrait:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/08/A0746BD8-3C31-404F-A8BD-9A8146AEB0CC-1.jpg",
-  nightHero: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/octopus-17-1.jpg",
-  nightDivers: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/divers-02-1.jpg",
-  nightMarine:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/09/Screenshot-2023-07-26-at-2.14.11-PM-min-1-1024x631.png",
-  campHero:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/08/1596492475-huge-scaled.jpg",
-  campTrail:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/09/WE-like.00_19_04_08.Still065.jpg",
-  campWildlife:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/09/shutterstock_44310088.png",
-  buffaloFish:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/08/Screenshot-2023-08-29-at-4.20.18-PM.png",
-  burrowingOwl: "https://seamonkeynetwork.com/wp-content/uploads/2023/08/sea-2-2.jpg",
-  // Replace with an official SeaMonkey rock hyrax close-up when published.
-  rockHyrax:
-    "https://seamonkeynetwork.com/wp-content/uploads/2023/08/A0746BD8-3C31-404F-A8BD-9A8146AEB0CC-1.jpg",
+  oryxHero: "/assets/seamonkey/arabian-oryx-herd.jpeg",
+  oryxDetail: "/assets/seamonkey/oryx-safari-vehicle.jpeg",
+  oryxSecond: "/assets/seamonkey/oryx-guides.jpeg",
+  buffaloHero: "/assets/seamonkey/water-buffalo-reeds.jpeg",
+  buffaloDetail: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
+  birds: "/assets/seamonkey/burrowing-owl.jpeg",
+  turtle: "/assets/seamonkey/red-sea-turtle.jpeg",
+  marine: "/assets/seamonkey/red-sea-coral.jpeg",
+  plane: "/assets/seamonkey/red-sea-turtle-wide.jpeg",
+  hikeHero: "/assets/seamonkey/dana-mountains.jpeg",
+  hikeTrail: "/assets/seamonkey/dana-mountains.jpeg",
+  hikePortrait: "/assets/seamonkey/rock-hyrax.jpeg",
+  nightHero: "/assets/seamonkey/night-dive-octopus.jpeg",
+  nightDivers: "/assets/seamonkey/red-sea-turtle-wide.jpeg",
+  nightMarine: "/assets/seamonkey/night-dive-octopus.jpeg",
+  campHero: "/assets/seamonkey/dana-mountains.jpeg",
+  campTrail: "/assets/seamonkey/rock-hyrax.jpeg",
+  campWildlife: "/assets/seamonkey/burrowing-owl.jpeg",
+  buffaloFish: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
+  burrowingOwl: "/assets/seamonkey/burrowing-owl.jpeg",
+  rockHyrax: "/assets/seamonkey/rock-hyrax.jpeg",
 };
 
 export const expeditions: Expedition[] = [
@@ -167,8 +156,7 @@ export const expeditions: Expedition[] = [
     difficulty: "Water activity; dive certification may apply",
     bestTime: "Year-round, weather dependent",
     wildlifeSummary: "Sea turtles, moray eels, lionfish, eagle rays, reef fish",
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2023/08/Turtle-1-1024x566.jpg",
+    image: officialImages.turtle,
     heroImage: officialImages.turtle,
     galleryImages: [officialImages.marine, officialImages.plane],
     accent: "sea",
@@ -262,8 +250,7 @@ export const expeditions: Expedition[] = [
     difficulty: "Guided wilderness hike",
     bestTime: "Early morning departures",
     wildlifeSummary: "Rock hyrax, Nubian ibex, birds, raptors, reptiles",
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2023/08/sea-2-2-1024x684.jpg",
+    image: officialImages.hikeHero,
     heroImage: officialImages.hikeHero,
     galleryImages: [officialImages.hikeTrail, officialImages.hikePortrait],
     accent: "mountain",
@@ -441,8 +428,7 @@ export const expeditions: Expedition[] = [
     difficulty: "Overnight wilderness camp and guided hike",
     bestTime: "Year-round, weather dependent",
     wildlifeSummary: "Burrowing owls, birds, rock hyrax, Nubian ibex, possible nocturnal wildlife",
-    image:
-      "https://seamonkeynetwork.com/wp-content/uploads/2024/03/hikeinwild1-1.jpg",
+    image: officialImages.campHero,
     heroImage: officialImages.campHero,
     galleryImages: [officialImages.campTrail, officialImages.campWildlife],
     accent: "camp",

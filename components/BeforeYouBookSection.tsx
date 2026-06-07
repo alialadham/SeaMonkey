@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Bird,
   Binoculars,
   Mountain,
   PawPrint,
@@ -47,7 +46,7 @@ const tripTypes = [
     slug: "water-buffalo-birdwatching-trek",
     label: "Water Buffalo / Bird Watching",
     description: "A wetland trek for buffalo, birds, and rare freshwater life.",
-    icon: Bird,
+    icon: PawPrint,
   },
 ];
 

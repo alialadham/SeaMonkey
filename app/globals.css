@@ -111,6 +111,74 @@ video {
   .font-display {
     @apply font-bold;
   }
+
+  .site-loader {
+    @apply fixed inset-0 z-[9999] grid place-items-center overflow-hidden bg-ink text-parchment;
+  }
+
+  .site-loader-water {
+    @apply absolute inset-0 opacity-90;
+    background:
+      radial-gradient(circle at 50% 42%, rgba(200, 155, 74, 0.16), transparent 24%),
+      radial-gradient(circle at 18% 22%, rgba(26, 156, 181, 0.2), transparent 28%),
+      linear-gradient(155deg, #020d15 0%, #062b3f 46%, #031923 100%);
+    animation: loader-water 7.4s ease-in-out infinite alternate;
+  }
+
+  .site-loader-rays {
+    @apply absolute inset-0 opacity-35;
+    background:
+      linear-gradient(108deg, transparent 12%, rgba(248, 243, 232, 0.12) 22%, transparent 34%),
+      linear-gradient(124deg, transparent 30%, rgba(216, 185, 140, 0.1) 42%, transparent 55%);
+    transform-origin: top center;
+    animation: loader-rays 5.8s ease-in-out infinite alternate;
+  }
+
+  .site-loader-particles {
+    @apply absolute inset-0 opacity-45;
+    background-image:
+      radial-gradient(circle, rgba(248, 243, 232, 0.32) 0 1px, transparent 1.5px),
+      radial-gradient(circle, rgba(216, 185, 140, 0.28) 0 1px, transparent 1.5px);
+    background-position: 0 0, 36px 58px;
+    background-size: 92px 92px, 128px 128px;
+    animation: loader-particles 9s linear infinite;
+  }
+
+  .site-loader-content {
+    @apply relative z-10 flex w-[min(82vw,360px)] flex-col items-center text-center;
+  }
+
+  .site-loader-logo {
+    @apply h-28 w-auto drop-shadow-2xl md:h-36;
+  }
+
+  .site-loader-copy {
+    @apply mt-7;
+  }
+
+  .site-loader-copy p {
+    @apply text-xl font-semibold uppercase tracking-[0.22em] text-white md:text-2xl;
+  }
+
+  .site-loader-copy span {
+    @apply mt-3 block text-xs font-bold uppercase tracking-[0.38em] text-gold/85;
+  }
+
+  .site-loader-progress {
+    @apply mt-8 h-px w-full overflow-hidden rounded-full bg-white/15;
+  }
+
+  .site-loader-progress div {
+    @apply h-full origin-left bg-gold shadow-[0_0_18px_rgba(200,155,74,0.55)];
+  }
+
+  .site-loader-status {
+    @apply mt-4 text-xs font-semibold uppercase tracking-[0.24em] text-sand/80;
+  }
+
+  .site-loader-powered {
+    @apply mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-sand/80;
+  }
 }
 
 @keyframes reviews-marquee {
@@ -123,9 +191,47 @@ video {
   }
 }
 
+@keyframes loader-water {
+  from {
+    transform: scale(1);
+    filter: saturate(1);
+  }
+
+  to {
+    transform: scale(1.04) translate3d(0, -1.2%, 0);
+    filter: saturate(1.12);
+  }
+}
+
+@keyframes loader-rays {
+  from {
+    transform: translateX(-1.5%) skewX(-4deg);
+  }
+
+  to {
+    transform: translateX(1.5%) skewX(-2deg);
+  }
+}
+
+@keyframes loader-particles {
+  from {
+    background-position: 0 0, 36px 58px;
+  }
+
+  to {
+    background-position: 0 -120px, 36px -88px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reviews-marquee {
     animation: none;
     @apply w-auto flex-wrap justify-center;
+  }
+
+  .site-loader-water,
+  .site-loader-rays,
+  .site-loader-particles {
+    animation: none;
   }
 }

@@ -59,17 +59,16 @@ Expedition detail pages include hero, quick facts, overview, route highlights, i
 
 ## Media / Image / Video Setup
 - Brand name should be `SeaMonkey Wildlife`.
-- Logo currently uses remote SVG: `https://seamonkeynetwork.com/wp-content/uploads/2023/09/LOGO.svg`.
+- Logo currently uses approved local asset: `public/assets/uploads/seamonkey-logo.jpg`.
 - Homepage hero video is local: `public/videos/seamonkey-hero.mp4`.
 - Hero video source is `assets.heroVideo` in `lib/site-data.ts`.
-- Animated canvas background is `components/HeroCanvas.tsx`.
-- Hero component is `components/HeroSection.tsx`.
+- Hero component is `components/HeroSection.tsx` and uses the local video as the only hero background media with a dark readability overlay.
 - Gallery/homepage media sources are in `lib/site-data.ts`.
 - Expedition media and itinerary data are in `lib/expeditions.ts`.
 - Journal/story data is in `lib/journal.ts`.
 - `components/ParallaxExpeditionMedia.tsx` provides parallax media with themed fallback panels.
 - `next.config.ts` allows remote `seamonkeynetwork.com/wp-content/uploads/**` images.
-- Important issue: `seamonkeynetwork.com` often returns HTML `/lander` redirects or invalid image responses for media URLs in local preview, so many remote images do not render locally. Use local approved images or a reliable CDN/storage for final launch.
+- Important issue: `seamonkeynetwork.com` often returns HTML `/lander` redirects or invalid image responses for media URLs in local preview. Current launch-critical image references use local approved assets.
 - Uploaded static asset paths such as `assets/wetlands-buffalo.png` are not present in this project. Do not leave broken references to them.
 
 ## WhatsApp Booking / Contact Behavior
@@ -133,8 +132,6 @@ Current integration from uploaded files:
 - Uploaded CSS themes converted into Tailwind class patterns inside components.
 
 ## Current Bugs / Issues
-- Remote images from `seamonkeynetwork.com` are blocked/invalid in local preview; Next image optimizer logs “requested resource isn't a valid image” and/or TLS/fetch errors.
-- Uploaded image assets referenced by static HTML are missing from the project.
 - Media/legal approval is still needed before public/commercial launch.
 - `next dev` can hang before binding locally; `next start` after `npm run build` has worked on `127.0.0.1:3002`.
 - Running `npm run build` while a dev server is active may stale/corrupt `.next`; stop/restart local servers around builds.
@@ -149,6 +146,22 @@ Current integration from uploaded files:
 - Add a real custom domain if desired.
 - If dashboard visibility under `alialadha` is needed, switch/login Vercel CLI, relink, and redeploy under that scope.
 - Add backend/contact handling only if requested; current intended flow is WhatsApp-first.
+
+## Final Delivery Audit - 2026-06-07
+- Confirmed project path: `/Users/alialadham/Documents/Codex/2026-05-06/i-want-to-create-a-brand`.
+- Confirmed required files exist: `package.json`, `app/page.tsx`, `PROJECT_BRIEF.md`.
+- Checked routes: `/`, `/adventures`, `/gallery`, `/journal`, all journal detail routes, all expedition detail routes, `/review`, and `/faq`; all returned `200`.
+- `/contact` is not implemented by design; Contact links open WhatsApp through `https://wa.me/962799900914`.
+- Rendered-page audit found no broken internal links, no user-facing `PDF` labels, and no user-facing `Sea Monkey Network` text.
+- Local media references were checked; all `/assets/...` and `/videos/...` paths exist under `public/`.
+- Homepage hero uses video-only background media with dark overlay.
+- Loader uses `sessionStorage` key `seamonkey-loader-seen` and does not permanently block the site.
+- Water Buffalo and Bird Watching Trek uses `PawPrint`/animal icon in adventure cards and trip-type cards.
+- WhatsApp booking CTAs are expedition-specific where expedition context is available.
+- Deployment hygiene checked: `.gitignore` excludes `.env*`, `node_modules`, `.next`, `.vercel`, and build outputs; no `.env` files found; no source secrets found; `package-lock.json` exists.
+- Final checks passed: `npm run lint`, `npm run typecheck`, and `NEXT_TELEMETRY_DISABLED=1 npm run build`.
+- Non-blocking build warning remains: `metadataBase` is not set, so Next.js uses `http://localhost:3000` for resolving social Open Graph/Twitter images during build.
+- Status: ready to push to GitHub and deploy to Vercel, pending media/legal approval and any desired domain/project rename.
 
 ## Important Files / Folders
 - `PROJECT_BRIEF.md` - current handoff brief

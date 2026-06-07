@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Compass, Play } from "lucide-react";
 import Link from "next/link";
-import { HeroCanvas } from "@/components/HeroCanvas";
 import { assets, whatsappBookingLink } from "@/lib/site-data";
 
 export function HeroSection() {
@@ -16,22 +15,15 @@ export function HeroSection() {
       id="home"
       className="relative min-h-[100svh] overflow-hidden bg-ink text-white"
     >
-      <HeroCanvas className="absolute inset-0 h-full w-full opacity-80" />
       <motion.div className="absolute inset-0 scale-[1.06]" style={{ y }}>
         {/* Replace hero video here. */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${assets.heroPoster})` }}
-          aria-hidden="true"
-        />
         <video
-          className="relative h-full w-full object-cover opacity-70 mix-blend-screen"
+          className="h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          poster={assets.heroPoster}
         >
           <source src={assets.heroVideo} type="video/mp4" />
         </video>
