@@ -1,7 +1,5 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
-import { whatsappBookingLink } from "@/lib/site-data";
 
 export function HomeBookingCta() {
   return (
@@ -15,22 +13,19 @@ export function HomeBookingCta() {
             Questions before booking?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl leading-8 text-parchment/[0.72]">
-            Check the FAQ or message SeaMonkey Wildlife on WhatsApp with your
-            preferred route, date, and group size.
+            Check the FAQ or choose one of the expedition types above to open a
+            route-specific WhatsApp booking message.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/faq" className="btn-ghost">
               FAQ
             </Link>
-            <a
-              href={whatsappBookingLink()}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/adventures"
               className="btn-gold"
             >
-              <MessageCircle className="h-4 w-4" />
-              Book on WhatsApp
-            </a>
+              Book Your Trip
+            </Link>
           </div>
         </AnimatedReveal>
       </div>

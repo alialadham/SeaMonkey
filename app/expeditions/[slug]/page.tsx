@@ -29,7 +29,7 @@ export async function generateMetadata({
 
   return {
     title: `${expedition.title} | SeaMonkey Wildlife`,
-    description: `${expedition.location} ${expedition.type.toLowerCase()} with SeaMonkey Wildlife. ${expedition.duration}, ${expedition.groupSize}.`,
+    description: `${expedition.location} ${expedition.tripType.toLowerCase()} with SeaMonkey Wildlife. ${expedition.duration}, ${expedition.groupSize}.`,
     openGraph: {
       title: `${expedition.title} | SeaMonkey Wildlife`,
       description: expedition.overview[0],

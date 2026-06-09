@@ -7,7 +7,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 export const metadata: Metadata = {
   title: "Give Us a Review | SeaMonkey Wildlife",
   description:
-    "Rate your SeaMonkey Wildlife expedition and share feedback through Google review or WhatsApp.",
+    "Rate your SeaMonkey Wildlife expedition and share feedback through the website review flow or WhatsApp.",
 };
 
 export default function ReviewPage() {

@@ -1,212 +1,171 @@
 # SeaMonkey Wildlife Website Brief
 
-## Project Name / Purpose
-SeaMonkey Wildlife website. A cinematic eco-adventure website for Jordan's first wildlife expedition agency, presenting desert, mountain, wetland, and Red Sea wildlife experiences with WhatsApp-first booking.
-
-## Current Project Path
-`/Users/alialadham/Documents/Codex/2026-05-06/i-want-to-create-a-brand`
+## Project
+- Project name: SeaMonkey Wildlife website.
+- Current path: `/Users/alialadham/Documents/Codex/2026-05-06/i-want-to-create-a-brand`.
+- Purpose: cinematic wildlife expedition website for Jordan wildlife trips with WhatsApp-first booking.
+- GitHub remote: `https://github.com/alialadham/SeaMonkey.git`.
+- Latest known local baseline commit from earlier handoff: `4aa639c Final SeaMonkey website checks`.
 
 ## Tech Stack
-- Next.js App Router, React, TypeScript
-- Tailwind CSS
-- Framer Motion
-- lucide-react
-- `next/image`
-- Local MP4 hero video
-- Vercel deployment via Vercel CLI
+- Next.js App Router, React, TypeScript.
+- Tailwind CSS.
+- Framer Motion.
+- lucide-react plus small custom inline SVG activity icons.
+- `next/image`.
+- Local MP4 video assets.
+- Vercel deployment via Vercel CLI.
 
-## Design / Style Direction
-- Cinematic premium eco-adventure, not a generic landing page.
-- Dark ocean/navy/black foundation with parchment, sand, olive, warm gold, and expedition-specific editorial themes.
-- Large media, dark overlays, subtle motion, parallax/editorial image panels, responsive layouts, premium cards, and a bold handwritten/adventure display font for major headings.
-- Preserve the current SeaMonkey Wildlife visual system and avoid broad redesigns unless explicitly requested.
+## Design Direction
+- Premium cinematic eco-adventure style.
+- Deep ocean/navy/black foundation with parchment, sand, olive, and warm gold accents.
+- Dark overlays, glass cards, image/video-led layouts, smooth reveal animations, editorial Blog pages, responsive grids.
+- Preserve the current SeaMonkey Wildlife visual direction. Do not rebuild/redesign unless explicitly requested.
 
-## Current Pages / Sections
-Homepage `/` includes:
-- Sticky responsive navbar
-- Hero with local video, animated canvas background, dark overlay, WhatsApp CTA, and field-journal anchors
-- About section with Vision/Mission TODO comment
-- Featured adventures: Scuba Diving, Arabian Oryx, Water Buffalo
-- Wildlife gallery with linked cards
-- Why Book With Us, including special arrangements with guides
-- Before You Book section with all six trip types and WhatsApp booking CTAs
-- Field Journal / six expedition story sections
-- Review CTA section linked to WhatsApp
-- FAQ accordion
-- Footer with `id="contact"`
-- Floating WhatsApp button
+## Pages / Routes / Features
+- Homepage `/`: loader, navbar, local video hero, homepage About preview with trailer video, featured expeditions, gallery preview, why book, before-you-book trip cards, Blog preview, reviews CTA section, FAQ/contact CTA, footer, floating WhatsApp button, back-to-top button.
+- `/about`: About Us page with MP4 hero video, field approach panel, highlights, Mission/Vision/Values, review CTA.
+- `/adventures`: internal route for the full user-facing Expeditions page; shows all six expeditions with icon-only filters and expedition-specific WhatsApp booking buttons.
+- `/gallery`: local wildlife gallery with cards linked to expedition details.
+- `/journal`: user-facing Blog index.
+- `/journal/[slug]`: editorial Blog detail pages with expedition-specific themes.
+- `/expeditions/[slug]`: expedition detail/itinerary pages.
+- `/review`: review/rating flow page.
+- `/faq`: FAQ page.
+- No `/contact` page by design; Contact opens WhatsApp.
 
-Current routes:
-- `/`
-- `/review`
-- `/journal`
-- `/journal/[slug]`
-- `/journal/water-buffalo-birdwatching-azraq`
-- `/journal/camp-in-the-wild-tafilah`
-- `/journal/red-sea-scuba-snorkel-cruise`
-- `/journal/hike-in-the-wild-tafilah`
-- `/journal/arabian-oryx-field-safari`
-- `/journal/night-dive-aqaba`
-- `/expeditions/[slug]`
-- `/expeditions/arabian-oryx-photography-safari`
-- `/expeditions/scuba-dive-snorkel-cruise-red-sea`
-- `/expeditions/hike-in-the-wild`
-- `/expeditions/night-dive`
-- `/expeditions/camp-in-the-wild`
-- `/expeditions/water-buffalo-birdwatching-trek`
+## Media / Images / Video
+- Logo: `public/assets/uploads/seamonkey-logo.jpg`.
+- Homepage hero video: `public/videos/seamonkey-hero.mp4`.
+- About page hero video and homepage trailer area: `public/videos/seamonkey-about-hero.mp4`.
+- Main asset config: `lib/site-data.ts`.
+- Expedition media/data: `lib/expeditions.ts`.
+- Blog media/data: `lib/journal.ts`.
+- Local expedition images in `public/assets/seamonkey/`.
+- `next.config.ts` allows remote `seamonkeynetwork.com/wp-content/uploads/**`, but launch-critical media should stay local because remote WordPress media can fail locally.
 
-Expedition detail pages include hero, quick facts, overview, route highlights, itinerary, wildlife cards, what-to-bring checklist, booking CTA, related expeditions, and a matching field-journal link.
+## Loader Status
+- Loader component: `components/SiteLoader.tsx`.
+- Mounted in `app/layout.tsx`.
+- First page load only via `sessionStorage` key `seamonkey-loader-seen`.
+- Uses approved SeaMonkey logo, progress line/percentage, and `Powered by Brandak`.
+- Reduced-motion mode uses simplified timing/progress.
 
-## Media / Image / Video Setup
-- Brand name should be `SeaMonkey Wildlife`.
-- Logo currently uses approved local asset: `public/assets/uploads/seamonkey-logo.jpg`.
-- Homepage hero video is local: `public/videos/seamonkey-hero.mp4`.
-- Hero video source is `assets.heroVideo` in `lib/site-data.ts`.
-- Hero component is `components/HeroSection.tsx` and uses the local video as the only hero background media with a dark readability overlay.
-- Gallery/homepage media sources are in `lib/site-data.ts`.
-- Expedition media and itinerary data are in `lib/expeditions.ts`.
-- Journal/story data is in `lib/journal.ts`.
-- `components/ParallaxExpeditionMedia.tsx` provides parallax media with themed fallback panels.
-- `next.config.ts` allows remote `seamonkeynetwork.com/wp-content/uploads/**` images.
-- Important issue: `seamonkeynetwork.com` often returns HTML `/lander` redirects or invalid image responses for media URLs in local preview. Current launch-critical image references use local approved assets.
-- Uploaded static asset paths such as `assets/wetlands-buffalo.png` are not present in this project. Do not leave broken references to them.
-
-## WhatsApp Booking / Contact Behavior
-- WhatsApp is the main booking/contact flow.
+## WhatsApp / Contact / Booking
 - WhatsApp number/link: `https://wa.me/962799900914`.
-- Generic booking helper: `whatsappBookingLink()` in `lib/site-data.ts`.
+- Booking helper: `whatsappBookingLink()` in `lib/site-data.ts`.
 - Review helper: `whatsappReviewLink()` in `lib/site-data.ts`.
-- Generic CTAs use SeaMonkey Wildlife prefilled messages.
-- Expedition CTAs use expedition-specific WhatsApp messages.
-- Floating WhatsApp button is fixed bottom-right with actual WhatsApp SVG and `aria-label="Chat on WhatsApp"`.
-- Footer keeps WhatsApp, email, and Instagram placeholder links.
+- Feedback helper: `whatsappFeedbackLink()` in `lib/site-data.ts`.
+- Generic homepage booking CTAs route to `/adventures` first; they do not open generic WhatsApp directly.
+- Expedition cards/detail pages use expedition-specific WhatsApp prefilled messages.
+- Footer includes WhatsApp, email, Instagram placeholder, and Leave a Review.
 - Email: `info@seamonkeynetwork.com`.
-- No backend form, Supabase, email service, or CRM exists.
+- No backend form, CRM, Supabase, or email sending service is connected.
 
-## Gallery / Itinerary / Blog Status
-- Gallery cards are linked to matching expedition pages.
-- Featured adventures show only three requested cards: Scuba Diving, Arabian Oryx, Water Buffalo.
-- Full six-trip booking options live in `BeforeYouBookSection`.
-- Itinerary/detail pages are still the main route-specific booking pages.
-- Blog/journal exists at `/journal` and `/journal/[slug]`.
-- Journal uses story/content from the uploaded static HTML for six expeditions.
-- Homepage also includes `ExpeditionStoriesSection` with editorial versions of the six journal stories.
+## Expedition / Icon Status
+- Shared activity icon mapping lives in `components/ActivityIcons.tsx`.
+- Arabian Oryx Photography Safari: `CarFront` vehicle icon.
+- Scuba Dive, Snorkel and Cruise the Red Sea: custom `SnorkelMaskIcon`.
+- Hike in the Wild: custom `HikingGearIcon`.
+- Night Dive: custom `ScubaGearIcon`.
+- Camp in the Wild: `Tent`.
+- Water Buffalo and Bird Watching Trek: custom `HikingGearIcon`, not bird-only and not PawPrint.
+- Icons are used in featured cards, all-expeditions grid, before-you-book cards, and expedition detail trip-type facts/pills.
+- `/adventures` filters are icon-only with accessible labels/titles:
+  - All, Scuba Diving / Snorkel, Hiking, Camping and Hiking, Safari / Wildlife.
 
-## Deployment / Vercel Status
-- Production URL to share: `https://i-want-to-create-a-brand.vercel.app`.
-- Latest known long deployment URL from prior handoff: `https://i-want-to-create-a-brand-ozgps2j3g-aliadham3355-5321s-projects.vercel.app`.
-- Vercel project is linked locally via `.vercel/project.json`:
-  - project name: `i-want-to-create-a-brand`
-  - project id: `prj_JciZkOK6sr93duGyNVMWcbiabDKO`
-  - org/team id: `team_Zu38LyRJYgZo3UFpDRMtI0Dk`
-- Vercel CLI account previously confirmed as `brandak` / `aliadham3355-5321`; dashboard visibility may differ from user account `alialadha`.
-- The short production alias was previously public. Share the short production alias for clients/friends.
-- Current local preview has been run with `next start` on `http://127.0.0.1:3002`. `next dev` may hang before binding in this environment.
+## Blog Naming Status
+- User-facing `Journal` has been changed to `Blog`.
+- Internal routes and data names remain `/journal`, `journalPosts`, etc. Do not rename routes unless explicitly requested.
+- Blog cards show expedition names, not `PDF`.
+- Blog detail pages keep official/PDF-derived content and themed editorial layouts.
 
-## Recent Uploaded Static Files
-Uploaded via WhatsApp temp paths:
-- `index.html`
-- `styles.css`
-- `script.js`
+## Review Direction
+- Current direction: public review flow should become a Google Forms-style form.
+- Placeholder review form link is in `lib/site-data.ts` as `contact.reviewForm = "REPLACE_WITH_GOOGLE_FORM_LINK"` with comment `Replace with official Google Forms review link.`
+- Low ratings still branch toward private WhatsApp feedback using prefilled messages.
+- Visible Google Reviews wording/buttons have been removed.
+- Homepage mock sliding review carousel is hidden behind `showMockReviews = false` in `components/ReviewsSection.tsx`.
+- Comment present: `Mock reviews hidden until real reviews are provided.`
+- Keep `/review` route and review flow available.
 
-What they contain:
-- Cinematic hero with animated canvas background
-- Expedition index links
-- Six expedition story sections
-- Reveal-on-scroll animations
-- Parallax expedition images
-- Strong editorial/journal layout
-- Eco-adventure color themes
-- Expedition content for wetlands, Dana camp, Red Sea, hike, oryx, and night dive
+## GitHub Status
+- Git remote configured as `origin`: `https://github.com/alialadham/SeaMonkey.git`.
+- User previously reported/current status: pushed to GitHub.
+- `package-lock.json` is tracked.
+- `.gitignore` excludes `.env*`, `node_modules`, `.next`, `.vercel`, build outputs, and `work/`.
+- Current worktree contains ongoing uncommitted website updates and unrelated/untracked items such as `freellmapi/` and `PROJECT_BRIEF 2.md`; do not remove unrelated files unless explicitly asked.
 
-Important integration rule:
-- Use uploaded files as design, animation, and content reference only.
-- Convert/merge useful parts into React/Next components.
-- Do not copy-paste the static page blindly and do not replace the existing app.
-
-Current integration from uploaded files:
-- Canvas animation converted to `components/HeroCanvas.tsx`.
-- Parallax/reveal behavior adapted using Framer Motion and `components/ParallaxExpeditionMedia.tsx`.
-- Story content converted into `lib/journal.ts`.
-- Six editorial story sections converted into `components/ExpeditionStoriesSection.tsx`.
-- Uploaded CSS themes converted into Tailwind class patterns inside components.
+## Vercel / Deployment
+- Vercel was previously linked/relinked via Vercel CLI.
+- Existing/old production alias from earlier work: `https://i-want-to-create-a-brand.vercel.app`.
+- Desired future domain: `seamonkeywildlife.com`.
+- Project/domain slug remains generic unless renamed later.
+- Do not change deployment/domain settings unless specifically asked.
 
 ## Current Bugs / Issues
+- `metadataBase` warning appears during build unless metadata base URL is configured.
+- `next dev` can hang before accepting connections in this environment.
+- `next start` after `npm run build` has worked on `http://127.0.0.1:3003`.
+- Stop local server before running `npm run build` to avoid stale/corrupt `.next` output.
+- Local `node_modules` was repaired with `npm ci` after transient ESLint dependency errors.
 - Media/legal approval is still needed before public/commercial launch.
-- `next dev` can hang before binding locally; `next start` after `npm run build` has worked on `127.0.0.1:3002`.
-- Running `npm run build` while a dev server is active may stale/corrupt `.next`; stop/restart local servers around builds.
-- Project/domain still has generic slug `i-want-to-create-a-brand`.
+- Remote WordPress media can fail locally; keep critical media local.
 
 ## Pending Tasks
-- Replace blocked remote WordPress media with approved local files or reliable CDN/Vercel-hosted media.
-- Add missing static-upload images if provided and update references carefully.
-- Review and approve all media rights/legal usage.
-- Replace rock hyrax habitat fallback with true official rock hyrax close-up when available.
-- Decide whether to rename Vercel project/domain to a SeaMonkey-specific slug.
-- Add a real custom domain if desired.
-- If dashboard visibility under `alialadha` is needed, switch/login Vercel CLI, relink, and redeploy under that scope.
-- Add backend/contact handling only if requested; current intended flow is WhatsApp-first.
-
-## Final Delivery Audit - 2026-06-07
-- Confirmed project path: `/Users/alialadham/Documents/Codex/2026-05-06/i-want-to-create-a-brand`.
-- Confirmed required files exist: `package.json`, `app/page.tsx`, `PROJECT_BRIEF.md`.
-- Checked routes: `/`, `/adventures`, `/gallery`, `/journal`, all journal detail routes, all expedition detail routes, `/review`, and `/faq`; all returned `200`.
-- `/contact` is not implemented by design; Contact links open WhatsApp through `https://wa.me/962799900914`.
-- Rendered-page audit found no broken internal links, no user-facing `PDF` labels, and no user-facing `Sea Monkey Network` text.
-- Local media references were checked; all `/assets/...` and `/videos/...` paths exist under `public/`.
-- Homepage hero uses video-only background media with dark overlay.
-- Loader uses `sessionStorage` key `seamonkey-loader-seen` and does not permanently block the site.
-- Water Buffalo and Bird Watching Trek uses `PawPrint`/animal icon in adventure cards and trip-type cards.
-- WhatsApp booking CTAs are expedition-specific where expedition context is available.
-- Deployment hygiene checked: `.gitignore` excludes `.env*`, `node_modules`, `.next`, `.vercel`, and build outputs; no `.env` files found; no source secrets found; `package-lock.json` exists.
-- Final checks passed: `npm run lint`, `npm run typecheck`, and `NEXT_TELEMETRY_DISABLED=1 npm run build`.
-- Non-blocking build warning remains: `metadataBase` is not set, so Next.js uses `http://localhost:3000` for resolving social Open Graph/Twitter images during build.
-- Status: ready to push to GitHub and deploy to Vercel, pending media/legal approval and any desired domain/project rename.
+- Replace `REPLACE_WITH_GOOGLE_FORM_LINK` with official review form URL.
+- Configure `metadataBase` if social sharing metadata is needed.
+- Confirm media/legal rights before public commercial launch.
+- Decide whether to rename project/domain to a SeaMonkey-specific slug.
+- Add custom domain if desired.
+- Replace any remaining fallback media only when approved official assets are provided.
+- Add backend/contact handling only if requested; current intended flow is WhatsApp-first plus review form placeholder.
 
 ## Important Files / Folders
-- `PROJECT_BRIEF.md` - current handoff brief
-- `app/page.tsx` - homepage composition
-- `app/layout.tsx` - metadata/root layout
-- `app/expeditions/[slug]/page.tsx` - dynamic expedition route
-- `app/journal/page.tsx` - journal index
-- `app/journal/[slug]/page.tsx` - journal detail route
-- `app/review/page.tsx` - review CTA page
-- `app/globals.css` - Tailwind globals/shared classes
-- `components/HeroSection.tsx` - homepage hero
-- `components/HeroCanvas.tsx` - React canvas animation from uploaded script
-- `components/ExpeditionStoriesSection.tsx` - six editorial story sections from uploaded static HTML
-- `components/ParallaxExpeditionMedia.tsx` - React parallax/fallback media component
-- `components/Navbar.tsx` - sticky responsive navigation
-- `components/WhatsAppButton.tsx` - floating WhatsApp button
-- `components/WildlifeGallery.tsx` - homepage linked gallery
-- `components/BeforeYouBookSection.tsx` - six trip-type booking cards
-- `components/ReviewsSection.tsx` - WhatsApp review CTA
-- `components/ExpeditionDetailPage.tsx` - itinerary/detail UI
-- `components/ExpeditionCard.tsx` - adventure cards
-- `components/Footer.tsx` - footer/contact anchor
-- `lib/site-data.ts` - contact data, WhatsApp helpers, hero/gallery assets
-- `lib/expeditions.ts` - expedition data, routes, itinerary content, media
-- `lib/journal.ts` - journal/story data from uploaded static HTML
-- `public/videos/seamonkey-hero.mp4` - homepage hero video
-- `public/assets/` - local placeholder SVGs
-- `next.config.ts` - remote image config
-- `tailwind.config.ts` - theme colors/shadows/fonts/backgrounds
-- `package.json` - scripts: `dev`, `build`, `lint`, `typecheck`
-- `.vercel/project.json` - local Vercel project link
+- `PROJECT_BRIEF.md` - project memory and handoff brief.
+- `app/page.tsx` - homepage composition.
+- `app/layout.tsx` - root layout, metadata, loader, back-to-top mount.
+- `app/about/page.tsx` - About page.
+- `app/adventures/page.tsx` - all-expeditions page route.
+- `app/gallery/page.tsx` - gallery page.
+- `app/faq/page.tsx` - FAQ page.
+- `app/review/page.tsx` - review flow route.
+- `app/expeditions/[slug]/page.tsx` - expedition routes.
+- `app/journal/page.tsx` - Blog index.
+- `app/journal/[slug]/page.tsx` - Blog detail pages.
+- `components/ActivityIcons.tsx` - shared custom/lucide activity icon mapping.
+- `components/AboutSection.tsx` - homepage About/trailer section.
+- `components/ExpeditionsGrid.tsx` - full Expeditions page filters/cards.
+- `components/ExpeditionCard.tsx` - featured expedition cards.
+- `components/BeforeYouBookSection.tsx` - six trip-type cards.
+- `components/ExpeditionDetailPage.tsx` - itinerary/detail UI.
+- `components/ReviewsSection.tsx` - review CTA and hidden mock carousel.
+- `components/ReviewFlow.tsx` - rating/private feedback flow.
+- `components/Navbar.tsx`, `components/Footer.tsx`, `components/WhatsAppButton.tsx`, `components/SiteLoader.tsx`.
+- `lib/site-data.ts` - contact helpers, review form placeholder, asset paths, gallery items, FAQs.
+- `lib/expeditions.ts` - expedition data, media, itineraries, trip categories.
+- `lib/journal.ts` - Blog/PDF-derived content and theme metadata.
+- `public/assets/seamonkey/` - local expedition images.
+- `public/videos/seamonkey-hero.mp4` - homepage hero video.
+- `public/videos/seamonkey-about-hero.mp4` - About hero and homepage trailer video.
+- `tsconfig.json` - excludes unrelated `freellmapi`.
+- `package.json` scripts: `dev`, `build`, `lint`, `typecheck`.
 
-## Rules For Future Codex Chats
-- First read this `PROJECT_BRIEF.md`.
-- Confirm the current project path before editing.
-- Do not rebuild or redesign unless explicitly asked.
-- Do not remove existing pages, routes, sections, media setup, booking/contact flow, deployment setup, itinerary/blog structure, or responsive layout unless explicitly requested.
-- Keep changes scoped to the user's specific request.
+## Rules For Next Codex Chat
+- First read `PROJECT_BRIEF.md`.
+- Confirm current project path and required files before editing.
+- Run the site locally before making changes, preferably `npm run build` then `npx next start --hostname 127.0.0.1 --port 3003` if needed.
+- Do not rebuild, redesign, or replace the website unless explicitly asked.
+- Do not remove existing pages, routes, sections, media setup, loader, WhatsApp flow, deployment setup, Blog/expedition/review structure, or responsive layout unless explicitly requested.
+- Keep changes scoped to the user’s exact request.
 - Do not inspect unrelated files unless needed.
-- Do not run lint/typecheck/build/deploy unless the user asks or the change requires verification.
-- Preserve WhatsApp-first booking behavior.
-- Preserve `SeaMonkey Wildlife` branding; do not use `Sea Monkey Network` except in old source comments or references.
-- Use official/approved SeaMonkey media where possible; avoid cartoon/fake wildlife imagery.
-- Do not leave broken uploaded `assets/*.png` references if those files are missing.
-- If deploying, use Vercel carefully and report exact public URL/status. Do not expose secrets.
-- If building locally, stop/restart local servers around builds to avoid stale manifests.
+- Do not run lint/typecheck/build/deploy unless asked or truly needed for verification.
+- Preserve `SeaMonkey Wildlife` branding.
+- Do not use `Sea Monkey Network` user-facing text unless it is part of an old logo image.
+- Use official/approved local SeaMonkey media where possible.
+- Avoid fake/cartoon wildlife imagery when real uploaded images exist.
+- Do not leave broken local asset references.
+- If building locally, stop local server first.
+- If deploying, use Vercel carefully and report exact URL/status. Do not expose secrets.
 
-Continue from this brief. Do not rebuild. Preserve the current SeaMonkey Wildlife design, pages, routes, media setup, WhatsApp booking flow, itinerary/blog structure, and responsive layout. First confirm the correct project path, then make only the requested change.
+Continue from this brief. Do not rebuild. Preserve the current SeaMonkey Wildlife design, routes, media setup, loader, WhatsApp booking flow, Blog/expedition/review structure, deployment setup, and responsive layout. First confirm the correct project path, then run the site locally before making changes.

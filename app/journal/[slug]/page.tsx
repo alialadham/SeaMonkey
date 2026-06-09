@@ -140,15 +140,15 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Journal Not Found | SeaMonkey Wildlife",
+      title: "Blog Post Not Found | SeaMonkey Wildlife",
     };
   }
 
   return {
-    title: `${post.title} | SeaMonkey Wildlife Journal`,
+    title: `${post.title} | SeaMonkey Wildlife Blog`,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} | SeaMonkey Wildlife Journal`,
+      title: `${post.title} | SeaMonkey Wildlife Blog`,
       description: post.excerpt,
       images: [{ url: post.heroImage }],
     },
@@ -208,7 +208,7 @@ export default async function JournalPostPage({
                 href="/journal"
                   className={`inline-flex text-xs font-bold uppercase tracking-[0.26em] transition ${theme.label}`}
               >
-                  Back to journal
+                  Back to blog
               </Link>
                 <p className={`mt-7 text-xs font-black uppercase tracking-[0.26em] ${theme.label}`}>
                   {post.label}

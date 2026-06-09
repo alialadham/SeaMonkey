@@ -1,11 +1,14 @@
 import Link from "next/link";
 import {
   Binoculars,
-  Mountain,
-  PawPrint,
+  CarFront,
   Tent,
-  Waves,
 } from "lucide-react";
+import {
+  DiveGogglesIcon,
+  HikingGearIcon,
+  SnorkelMaskIcon,
+} from "@/components/ActivityIcons";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { expeditions } from "@/lib/expeditions";
@@ -16,25 +19,25 @@ const tripTypes = [
     slug: "arabian-oryx-photography-safari",
     label: "Arabian Oryx",
     description: "A vehicle safari shaped around Jordan's national animal.",
-    icon: PawPrint,
+    icon: CarFront,
   },
   {
     slug: "hike-in-the-wild",
     label: "Hiking",
     description: "Guided wilderness trails through Jordan's mountain habitat.",
-    icon: Mountain,
+    icon: HikingGearIcon,
   },
   {
     slug: "scuba-dive-snorkel-cruise-red-sea",
     label: "Scuba Diving",
     description: "Reef, turtle, and marine-life trips from Aqaba.",
-    icon: Waves,
+    icon: SnorkelMaskIcon,
   },
   {
     slug: "night-dive",
     label: "Night Dive",
     description: "After-dark Red Sea diving for nocturnal marine encounters.",
-    icon: Waves,
+    icon: DiveGogglesIcon,
   },
   {
     slug: "camp-in-the-wild",
@@ -46,7 +49,7 @@ const tripTypes = [
     slug: "water-buffalo-birdwatching-trek",
     label: "Water Buffalo / Bird Watching",
     description: "A wetland trek for buffalo, birds, and rare freshwater life.",
-    icon: PawPrint,
+    icon: HikingGearIcon,
   },
 ];
 
@@ -57,7 +60,7 @@ export function BeforeYouBookSection() {
         <SectionHeading
           eyebrow="Before you book"
           title="Pick the trip type that fits your field day."
-          copy="SeaMonkey Wildlife offers six guided adventure styles across desert, mountain, wetland, and Red Sea habitats. Each booking starts on WhatsApp."
+          copy="SeaMonkey Wildlife offers six guided expedition styles across desert, mountain, wetland, and Red Sea habitats. Choose your trip type first, then open the expedition-specific WhatsApp booking message."
           align="center"
         />
 
@@ -95,7 +98,7 @@ export function BeforeYouBookSection() {
                     rel="noreferrer"
                     className="btn-gold"
                   >
-                    Book on WhatsApp
+                    Book this expedition
                   </a>
                   <Link
                     href={`/expeditions/${slug}`}

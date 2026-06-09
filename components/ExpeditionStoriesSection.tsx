@@ -64,14 +64,14 @@ const themeStyles = {
 
 export function ExpeditionStoriesSection() {
   return (
-    <section id="field-journal" className="bg-parchment">
+    <section id="blog" className="bg-parchment">
       <div className="section-shell bg-ink">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <AnimatedReveal>
             <SectionHeading
-              eyebrow="Field journal"
+              eyebrow="Blog"
               title="Six stories from Jordan's wild routes."
-              copy="Adapted from the uploaded static SeaMonkey field journal into the existing Next.js experience."
+              copy="Adapted from the uploaded static SeaMonkey route notes into the existing Next.js experience."
               align="center"
             />
           </AnimatedReveal>
@@ -143,7 +143,7 @@ export function ExpeditionStoriesSection() {
 
                 <div className={`mt-8 rounded-[8px] border p-5 shadow-xl shadow-black/5 ${styles.panel}`}>
                   <p className={`text-xs font-bold uppercase tracking-[0.18em] ${styles.accent}`}>
-                    Field journal
+                    Blog
                   </p>
                   <span
                     className={`mt-4 inline-flex rounded-[8px] border px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] ${styles.chip}`}
@@ -151,7 +151,7 @@ export function ExpeditionStoriesSection() {
                     {post.expedition.title}
                   </span>
                   <p className="mt-5 text-sm leading-7 opacity-80">
-                    Official adventure field notes are available on the journal page.
+                    Official expedition field notes are available on the blog page.
                   </p>
                 </div>
 

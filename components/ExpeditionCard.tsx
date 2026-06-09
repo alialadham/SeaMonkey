@@ -3,36 +3,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Bird,
   Clock,
   MapPin,
-  Mountain,
-  PawPrint,
-  Tent,
   Users,
-  Waves,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { getExpeditionActivityIcon } from "@/components/ActivityIcons";
 import type { Expedition } from "@/lib/expeditions";
 
-const accentIcons = {
-  safari: PawPrint,
-  sea: Waves,
-  mountain: Mountain,
-  camp: Tent,
-  bird: Bird,
-};
-
-const expeditionIconOverrides = {
-  "water-buffalo-birdwatching-trek": PawPrint,
-};
-
-const adventureLabels: Record<string, string> = {
-  "arabian-oryx-photography-safari": "Arabian Oryx",
-  "scuba-dive-snorkel-cruise-red-sea": "Scuba Diving",
+const expeditionLabels: Record<string, string> = {
+  "arabian-oryx-photography-safari": "Safari",
+  "scuba-dive-snorkel-cruise-red-sea": "Scuba / Snorkel",
   "hike-in-the-wild": "Hiking",
-  "night-dive": "Night Dive",
-  "camp-in-the-wild": "Camp in the Wild",
+  "night-dive": "Scuba Diving",
+  "camp-in-the-wild": "Camping and Hiking",
   "water-buffalo-birdwatching-trek": "Water Buffalo",
 };
 
@@ -42,11 +26,8 @@ type ExpeditionCardProps = {
 };
 
 export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
-  const AccentIcon =
-    expeditionIconOverrides[
-      expedition.slug as keyof typeof expeditionIconOverrides
-    ] ?? accentIcons[expedition.accent];
-  const adventureLabel = adventureLabels[expedition.slug] ?? expedition.title;
+  const AccentIcon = getExpeditionActivityIcon(expedition);
+  const expeditionLabel = expeditionLabels[expedition.slug] ?? expedition.tripType;
 
   return (
     <motion.article
@@ -70,7 +51,7 @@ export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
           <div className="absolute inset-x-4 bottom-4 flex translate-y-5 items-center gap-3 rounded-[8px] border border-white/15 bg-ink/[0.72] px-4 py-3 opacity-0 shadow-cinematic backdrop-blur-md transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
             <AccentIcon className="h-5 w-5" />
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
-              {adventureLabel}
+              {expeditionLabel}
             </span>
           </div>
         </div>
@@ -93,7 +74,7 @@ export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
             </p>
             <p className="flex items-center gap-3">
               <AccentIcon className="h-4 w-4 text-gold" />
-              {expedition.type}
+              {expedition.tripType}
             </p>
           </div>
           <span className="mt-6 inline-flex w-full items-center justify-center rounded-[8px] bg-gold px-5 py-3 text-sm font-bold text-ink shadow-gold transition group-hover:bg-sand">

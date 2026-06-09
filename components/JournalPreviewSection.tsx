@@ -11,9 +11,9 @@ export function JournalPreviewSection() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <AnimatedReveal>
           <SectionHeading
-            eyebrow="Field journal"
+            eyebrow="Blog"
             title="Official route notes."
-            copy="A preview of SeaMonkey Wildlife field journal posts for the main expedition routes."
+            copy="A preview of SeaMonkey Wildlife blog posts for the main expedition routes."
             align="center"
           />
         </AnimatedReveal>
@@ -54,7 +54,7 @@ export function JournalPreviewSection() {
 
         <div className="mt-8 text-center">
           <Link href="/journal" className="btn-gold">
-            Read Field Journal <ArrowRight className="h-4 w-4" />
+            Read Blog <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

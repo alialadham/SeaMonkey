@@ -2,10 +2,67 @@ export const contact = {
   email: "info@seamonkeynetwork.com",
   phoneDisplay: "00962799900914",
   whatsapp: "https://wa.me/962799900914",
+  // Replace placeholder values only; add new entry IDs only after Google Forms provides them.
+  reviewForm:
+    "https://docs.google.com/forms/d/e/1FAIpQLSfAtHo_QD1e0dW9gN-zEa4zWIP1gpyC53r4EqWcTxV14fKyoA/viewform?usp=pp_url&entry.1347091171=NAME_HERE&entry.1893642016=CONTACT_HERE&entry.988790084=REVIEW_HERE&entry.1274195422=ISSUE_HERE",
   googleReview:
     "https://www.google.com/search?q=SeaMonkey+Wildlife+Jordan+Google+review",
   instagramPlaceholder: "https://instagram.com/seamonkey.network?igshid=OGQ5ZDc2ODk2ZA==",
 };
+
+const reviewFormPlaceholders = {
+  name: "NAME_HERE",
+  contactInfo: "CONTACT_HERE",
+  expedition: "EXPEDITION_HERE",
+  rating: "RATING_HERE",
+  review: "REVIEW_HERE",
+  issue: "ISSUE_HERE",
+  details: "DETAILS_HERE",
+};
+
+export type ReviewFormValues = {
+  name?: string;
+  contactInfo?: string;
+  expedition?: string;
+  rating?: number;
+  review?: string;
+  issue?: string;
+  details?: string;
+};
+
+export function googleReviewFormLink(values: ReviewFormValues) {
+  const formUrl = contact.reviewForm;
+
+  if (!formUrl || formUrl === "REPLACE_WITH_GOOGLE_FORM_LINK") {
+    return { href: "", isPrefilled: false };
+  }
+
+  const hasPrefillPlaceholders = Object.values(reviewFormPlaceholders).some(
+    (placeholder) => formUrl.includes(placeholder),
+  );
+
+  if (!hasPrefillPlaceholders) {
+    return { href: formUrl, isPrefilled: false };
+  }
+
+  const replacements: Record<string, string> = {
+    [reviewFormPlaceholders.name]: values.name ?? "",
+    [reviewFormPlaceholders.contactInfo]: values.contactInfo ?? "",
+    [reviewFormPlaceholders.expedition]: values.expedition ?? "",
+    [reviewFormPlaceholders.rating]: values.rating ? String(values.rating) : "",
+    [reviewFormPlaceholders.review]: values.review ?? "",
+    [reviewFormPlaceholders.issue]: values.issue ?? "",
+    [reviewFormPlaceholders.details]: values.details ?? "",
+  };
+
+  let href = formUrl;
+
+  Object.entries(replacements).forEach(([placeholder, value]) => {
+    href = href.replaceAll(placeholder, encodeURIComponent(value));
+  });
+
+  return { href, isPrefilled: true };
+}
 
 export function whatsappBookingLink(expeditionTitle?: string) {
   const message = expeditionTitle
@@ -56,8 +113,10 @@ export const assets = {
   logo: "/assets/uploads/seamonkey-logo.jpg",
   // Replace hero video here.
   heroVideo: "/videos/seamonkey-hero.mp4",
+  aboutHeroVideo: "/videos/seamonkey-about-hero.mp4",
   // Replace poster image with a compressed, owned hero still for production.
   heroPoster: "/assets/seamonkey/red-sea-coral.jpeg",
+  aboutWalking: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
   aboutPrimary: "/assets/seamonkey/water-buffalo-reeds.jpeg",
   aboutSecondary: "/assets/seamonkey/arabian-oryx-herd.jpeg",
   aboutTertiary: "/assets/seamonkey/red-sea-turtle.jpeg",

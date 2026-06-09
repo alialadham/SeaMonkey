@@ -8,10 +8,11 @@ import { motion } from "framer-motion";
 import { assets, whatsappBookingLink } from "@/lib/site-data";
 
 const navLinks = [
-  { label: "Adventures", href: "/adventures" },
+  { label: "Expeditions", href: "/adventures" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Journal", href: "/journal" },
+  { label: "Blog", href: "/journal" },
   { label: "FAQ", href: "/faq" },
+  { label: "About Us", href: "/about" },
   { label: "Contact", href: whatsappBookingLink(), external: true },
 ];
 
@@ -74,14 +75,12 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <a
-            href={whatsappBookingLink()}
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            href="/adventures"
             className="btn-gold"
           >
             Book Your Trip
-          </a>
+          </Link>
         </div>
 
         <button
@@ -124,15 +123,13 @@ export function Navbar() {
                 </Link>
               )
             ))}
-            <a
-              href={whatsappBookingLink()}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/adventures"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-[8px] bg-gold px-4 py-3 text-center text-sm font-bold text-ink"
             >
               Book Your Trip
-            </a>
+            </Link>
           </div>
         </motion.div>
       ) : null}

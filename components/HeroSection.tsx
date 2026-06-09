@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Compass, Play } from "lucide-react";
 import Link from "next/link";
-import { assets, whatsappBookingLink } from "@/lib/site-data";
+import { assets } from "@/lib/site-data";
 
 export function HeroSection() {
   const { scrollY } = useScroll();
@@ -72,14 +72,12 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.34 }}
             className="mt-9 flex flex-col gap-3 sm:flex-row"
           >
-            <a
-              href={whatsappBookingLink()}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/adventures"
               className="btn-gold"
             >
               Book Your Trip
-            </a>
+            </Link>
             <Link href="/adventures" className="btn-ghost">
               <Play className="h-4 w-4" />
               View Expeditions
@@ -104,7 +102,7 @@ export function HeroSection() {
               className="rounded-[8px] border border-white/[0.12] bg-white/[0.08] px-4 py-4 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-gold/50"
             >
               <p className="text-xs uppercase tracking-[0.24em] text-gold">
-                Field journal
+                Blog
               </p>
               <p className="mt-1 text-sm font-semibold text-white">
                 {route.label}

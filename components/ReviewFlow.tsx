@@ -1,9 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { ArrowUpRight, MessageCircle, Star } from "lucide-react";
+import { type FormEvent, useMemo, useState } from "react";
+import { MessageCircle, Star } from "lucide-react";
 import { expeditions } from "@/lib/expeditions";
-import { contact, whatsappFeedbackLink, whatsappReviewLink } from "@/lib/site-data";
+import {
+  googleReviewFormLink,
+  whatsappFeedbackLink,
+  whatsappReviewLink,
+} from "@/lib/site-data";
 
 const defaultExpedition = "Not sure / other";
 
@@ -14,6 +18,7 @@ export function ReviewFlow() {
   const [issue, setIssue] = useState("");
   const [expedition, setExpedition] = useState(defaultExpedition);
   const [message, setMessage] = useState("");
+  const [reviewStatus, setReviewStatus] = useState("");
 
   const feedbackLink = useMemo(
     () =>
@@ -29,6 +34,81 @@ export function ReviewFlow() {
   );
 
   const needsFeedback = rating > 0 && rating < 5;
+  const publicReviewText = [
+    rating ? `Rating: ${rating}/5.` : "",
+    expedition ? `Expedition: ${expedition}.` : "",
+    message ? `Review/details: ${message}.` : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+  const reviewIssueText = [
+    rating && rating < 5 ? `Rating: ${rating}/5.` : "",
+    rating && rating < 5 && expedition ? `Expedition: ${expedition}.` : "",
+    issue ? `Issue/feedback: ${issue}.` : "",
+    rating && rating < 5 && message ? `Details: ${message}.` : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const reviewFormLink = useMemo(
+    () =>
+      googleReviewFormLink({
+        name,
+        contactInfo,
+        expedition,
+        rating,
+        review: publicReviewText,
+        issue: reviewIssueText,
+        details: message,
+      }),
+    [
+      contactInfo,
+      expedition,
+      message,
+      name,
+      publicReviewText,
+      rating,
+      reviewIssueText,
+    ],
+  );
+
+  function openExternalLink(href: string) {
+    const opened = window.open(href, "_blank", "noopener,noreferrer");
+    return Boolean(opened);
+  }
+
+  function openGoogleReview() {
+    if (reviewFormLink.href && openExternalLink(reviewFormLink.href)) {
+      setReviewStatus(
+        reviewFormLink.isPrefilled
+          ? "Your pre-filled Google Form opened in a new tab. Please press Submit there."
+          : "Google Forms opened in a new tab. Please press Submit there.",
+      );
+      return;
+    }
+
+    if (reviewFormLink.href) {
+      setReviewStatus(
+        "Google Forms could not open. Please allow pop-ups and press Leave a Review again.",
+      );
+      return;
+    }
+
+    const fallbackLink = whatsappReviewLink();
+
+    if (!openExternalLink(fallbackLink)) {
+      window.location.href = fallbackLink;
+    }
+
+    setReviewStatus(
+      "Google Forms could not open, so WhatsApp opened as a fallback.",
+    );
+  }
+
+  function handleReviewSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    openGoogleReview();
+  }
 
   return (
     <section className="section-shell bg-ink">
@@ -41,8 +121,9 @@ export function ReviewFlow() {
             How was your SeaMonkey Wildlife expedition?
           </h1>
           <p className="mt-5 max-w-2xl leading-8 text-parchment/[0.72]">
-            Choose a rating first. Great trips can go to Google; anything we
-            should fix goes straight to SeaMonkey Wildlife on WhatsApp.
+            Choose a rating first. Great trips can be shared on the website;
+            anything we should fix goes straight to SeaMonkey Wildlife on
+            WhatsApp.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -66,31 +147,66 @@ export function ReviewFlow() {
           {rating === 5 ? (
             <div className="mt-8 rounded-[8px] border border-gold/30 bg-gold/10 p-5">
               <h2 className="font-display text-3xl font-semibold text-white">
-                Thank you. A Google review would help.
+                Thank you. A review would help.
               </h2>
               <p className="mt-3 leading-7 text-parchment/[0.72]">
-                If your expedition deserved five stars, share it publicly so
-                future guests can find SeaMonkey Wildlife.
+                If your expedition deserved five stars, share it so future
+                guests can find SeaMonkey Wildlife.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={contact.googleReview}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-gold"
-                >
-                  Leave a Google Review <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href={whatsappReviewLink()}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  Message SeaMonkey
-                </a>
-              </div>
+              <form onSubmit={handleReviewSubmit} className="mt-6 grid gap-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="grid gap-2 text-sm font-semibold text-parchment">
+                    Name
+                    <input
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
+                      className="rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-white outline-none focus:border-gold"
+                    />
+                  </label>
+                  <label className="grid gap-2 text-sm font-semibold text-parchment">
+                    Phone or email
+                    <input
+                      value={contactInfo}
+                      onChange={(event) => setContactInfo(event.target.value)}
+                      className="rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-white outline-none focus:border-gold"
+                    />
+                  </label>
+                  <label className="grid gap-2 text-sm font-semibold text-parchment md:col-span-2">
+                    Which expedition did you join?
+                    <select
+                      value={expedition}
+                      onChange={(event) => setExpedition(event.target.value)}
+                      className="rounded-[8px] border border-white/10 bg-[#071923] px-4 py-3 text-white outline-none focus:border-gold"
+                    >
+                      <option>{defaultExpedition}</option>
+                      {expeditions.map((item) => (
+                        <option key={item.slug}>{item.title}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="grid gap-2 text-sm font-semibold text-parchment md:col-span-2">
+                    Public review
+                    <textarea
+                      value={message}
+                      onChange={(event) => setMessage(event.target.value)}
+                      rows={5}
+                      className="resize-none rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-3 text-white outline-none focus:border-gold"
+                    />
+                  </label>
+                </div>
+
+                {reviewStatus ? (
+                  <p className="text-sm font-semibold text-sand">
+                    {reviewStatus}
+                  </p>
+                ) : null}
+
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <button type="submit" className="btn-gold">
+                    Leave a Review
+                  </button>
+                </div>
+              </form>
             </div>
           ) : null}
 
@@ -106,8 +222,8 @@ export function ReviewFlow() {
 
               {rating === 4 ? (
                 <div className="mt-5 rounded-[8px] border border-gold/25 bg-gold/10 p-4 text-sm leading-7 text-sand">
-                  If the experience was still positive overall, a Google review
-                  helps. You can also send private notes below.
+                  If the experience was still positive overall, a review helps.
+                  You can also send private notes below.
                 </div>
               ) : null}
 
@@ -170,17 +286,19 @@ export function ReviewFlow() {
                   <MessageCircle className="h-4 w-4" />
                   Send Feedback on WhatsApp
                 </a>
-                {rating === 4 ? (
-                  <a
-                    href={contact.googleReview}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-ghost"
-                  >
-                    Leave a Google Review <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                ) : null}
+                <button
+                  type="button"
+                  onClick={openGoogleReview}
+                  className="btn-ghost"
+                >
+                  Leave a Review
+                </button>
               </div>
+              {reviewStatus ? (
+                <p className="mt-4 text-sm font-semibold text-sand">
+                  {reviewStatus}
+                </p>
+              ) : null}
             </div>
           ) : null}
         </div>

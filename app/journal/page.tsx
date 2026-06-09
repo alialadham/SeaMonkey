@@ -10,9 +10,9 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { journalPosts } from "@/lib/journal";
 
 export const metadata: Metadata = {
-  title: "Journal | SeaMonkey Wildlife",
+  title: "Blog | SeaMonkey Wildlife",
   description:
-    "Field notes and adventure previews from SeaMonkey Wildlife expeditions across Jordan.",
+    "Blog posts and expedition previews from SeaMonkey Wildlife expeditions across Jordan.",
 };
 
 export default function JournalPage() {
@@ -24,9 +24,9 @@ export default function JournalPage() {
           <div className="mx-auto max-w-7xl px-5 md:px-8">
             <AnimatedReveal>
               <SectionHeading
-                eyebrow="Journal"
-                title="Official adventure journal."
-                copy="Field journal posts for SeaMonkey Wildlife expeditions, with each story linked to its itinerary and WhatsApp booking flow."
+                eyebrow="Blog"
+                title="Official expedition blog."
+                copy="Blog posts for SeaMonkey Wildlife expeditions, with each story linked to its itinerary and WhatsApp booking flow."
                 align="center"
               />
             </AnimatedReveal>
@@ -63,7 +63,7 @@ export default function JournalPage() {
                         {post.excerpt}
                       </p>
                       <p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-gold">
-                        Read field note <ArrowRight className="h-4 w-4" />
+                        Read blog post <ArrowRight className="h-4 w-4" />
                       </p>
                     </div>
                   </Link>

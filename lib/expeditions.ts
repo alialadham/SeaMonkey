@@ -1,4 +1,10 @@
 export type ExpeditionAccent = "safari" | "sea" | "mountain" | "camp" | "bird";
+export type ExpeditionCategory =
+  | "Scuba Diving"
+  | "Snorkel and Mask"
+  | "Hiking"
+  | "Camping and Hiking"
+  | "Safari";
 
 export type ItineraryStep = {
   time: string;
@@ -18,6 +24,8 @@ export type Expedition = {
   title: string;
   location: string;
   type: string;
+  tripType: string;
+  categories: ExpeditionCategory[];
   duration: string;
   groupSize: string;
   difficulty?: string;
@@ -67,6 +75,8 @@ export const expeditions: Expedition[] = [
     title: "Arabian Oryx Photography Safari",
     location: "Azraq, Jordan",
     type: "Vehicle Safari",
+    tripType: "Safari",
+    categories: ["Safari"],
     duration: "3 hours",
     groupSize: "Min 3 to Max 14",
     difficulty: "Easy vehicle safari",
@@ -151,6 +161,8 @@ export const expeditions: Expedition[] = [
     title: "Scuba Dive, Snorkel and Cruise the Red Sea",
     location: "Aqaba, Jordan",
     type: "Sea Safari",
+    tripType: "Scuba Diving / Snorkel and Mask / Red Sea",
+    categories: ["Scuba Diving", "Snorkel and Mask"],
     duration: "5 hours",
     groupSize: "No minimum required",
     difficulty: "Water activity; dive certification may apply",
@@ -245,6 +257,8 @@ export const expeditions: Expedition[] = [
     title: "Hike in the Wild",
     location: "Tafilah, Jordan",
     type: "Hiking",
+    tripType: "Hiking",
+    categories: ["Hiking"],
     duration: "5 hours",
     groupSize: "Min 6 to Max 20",
     difficulty: "Guided wilderness hike",
@@ -344,6 +358,8 @@ export const expeditions: Expedition[] = [
     title: "Night Dive",
     location: "Aqaba, Jordan",
     type: "Sea Safari",
+    tripType: "Scuba Diving / Red Sea",
+    categories: ["Scuba Diving"],
     duration: "3 hours",
     groupSize: "Min 4 to Max 12",
     difficulty: "Scuba divers only",
@@ -423,6 +439,8 @@ export const expeditions: Expedition[] = [
     title: "Camp in the Wild",
     location: "Tafilah, Jordan",
     type: "Hiking and Camping",
+    tripType: "Camping and Hiking",
+    categories: ["Camping and Hiking"],
     duration: "1 night",
     groupSize: "Min 6 to Max 20",
     difficulty: "Overnight wilderness camp and guided hike",
@@ -529,6 +547,8 @@ export const expeditions: Expedition[] = [
     title: "Water Buffalo and Bird Watching Trek",
     location: "Azraq, Jordan",
     type: "Hiking",
+    tripType: "Hiking",
+    categories: ["Hiking"],
     duration: "3 hours",
     groupSize: "Min 3 to Max 20",
     difficulty: "Mild hike",

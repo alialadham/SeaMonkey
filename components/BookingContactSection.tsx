@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { expeditions } from "@/lib/expeditions";
-import { assets, contact, whatsappBookingLink } from "@/lib/site-data";
+import { assets, contact } from "@/lib/site-data";
 
 export function BookingContactSection() {
   return (
@@ -27,15 +28,13 @@ export function BookingContactSection() {
             copy="Solo traveler? Not a problem. Ask about upcoming public group trips, private expeditions, and custom wildlife routes."
           />
           <div className="mt-8 grid gap-3">
-            <a
-              href={whatsappBookingLink()}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              href="/#before-you-book"
               className="contact-link"
             >
               <MessageCircle className="h-5 w-5 text-gold" />
-              {contact.phoneDisplay}
-            </a>
+              Choose an expedition first
+            </Link>
             <a href={`mailto:${contact.email}`} className="contact-link">
               <Mail className="h-5 w-5 text-gold" />
               {contact.email}
@@ -88,22 +87,18 @@ export function BookingContactSection() {
               </label>
             </div>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappBookingLink()}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/#before-you-book"
                 className="btn-dark"
               >
-                Continue on WhatsApp
-              </a>
-              <a
-                href={whatsappBookingLink()}
-                target="_blank"
-                rel="noreferrer"
+                Choose Your Expedition
+              </Link>
+              <Link
+                href="/adventures"
                 className="btn-outline-dark"
               >
-                WhatsApp
-              </a>
+                View Expeditions
+              </Link>
             </div>
           </form>
         </AnimatedReveal>

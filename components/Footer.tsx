@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Star } from "lucide-react";
 import { assets, contact, whatsappBookingLink } from "@/lib/site-data";
 
 const links = [
-  { label: "Adventures", href: "/adventures" },
+  { label: "Expeditions", href: "/adventures" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Journal", href: "/journal" },
+  { label: "Blog", href: "/journal" },
   { label: "Give Us a Review", href: "/review" },
   { label: "FAQ", href: "/faq" },
+  { label: "About Us", href: "/about" },
   { label: "Contact", href: whatsappBookingLink(), external: true },
 ];
 
@@ -38,7 +39,7 @@ export function Footer() {
             </span>
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-7 text-white/60">
-            Premium eco-adventure across Jordan&apos;s desert reserves, wetlands,
+            Premium eco-expeditions across Jordan&apos;s desert reserves, wetlands,
             mountains, and Red Sea wildlife routes.
           </p>
         </div>
@@ -90,6 +91,10 @@ export function Footer() {
               <Mail className="h-4 w-4" />
               Email
             </a>
+            <Link href="/review" className="footer-link">
+              <Star className="h-4 w-4" />
+              Leave a Review
+            </Link>
             {/* Replace Instagram link/content with official SeaMonkey Wildlife Instagram. */}
             <a
               href={contact.instagramPlaceholder}

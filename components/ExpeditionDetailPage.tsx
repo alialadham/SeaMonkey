@@ -10,14 +10,12 @@ import {
   Clock,
   Mail,
   MapPin,
-  MessageCircle,
   Mountain,
   PawPrint,
-  Route,
   ShieldCheck,
   Users,
-  Waves,
 } from "lucide-react";
+import { getExpeditionActivityIcon } from "@/components/ActivityIcons";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
@@ -37,7 +35,6 @@ const factIcons = {
   location: MapPin,
   duration: Clock,
   group: Users,
-  type: Route,
   difficulty: Mountain,
   time: CalendarDays,
   wildlife: PawPrint,
@@ -47,11 +44,12 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
   const related = getRelatedExpeditions(expedition.relatedSlugs);
   const journalPost = getJournalPostByExpeditionSlug(expedition.slug);
   const bookingLink = whatsappBookingLink(expedition.title);
+  const TripIcon = getExpeditionActivityIcon(expedition);
   const facts = [
     { label: "Location", value: expedition.location, icon: factIcons.location },
     { label: "Duration", value: expedition.duration, icon: factIcons.duration },
     { label: "Group size", value: expedition.groupSize, icon: factIcons.group },
-    { label: "Trip type", value: expedition.type, icon: factIcons.type },
+    { label: "Trip type", value: expedition.tripType, icon: TripIcon },
     {
       label: "Difficulty",
       value: expedition.difficulty ?? "Ask SeaMonkey Wildlife",
@@ -100,8 +98,8 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
                   {expedition.location}
                 </span>
                 <span className="detail-pill">
-                  <Waves className="h-4 w-4" />
-                  {expedition.type}
+                  <TripIcon className="h-4 w-4" />
+                  {expedition.tripType}
                 </span>
                 <span className="detail-pill">
                   <Clock className="h-4 w-4" />
@@ -119,23 +117,14 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
                   rel="noreferrer"
                   className="btn-gold"
                 >
-                  Book This Trip
-                </a>
-                <a
-                  href={bookingLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp Us
+                  Book this expedition
                 </a>
                 {journalPost ? (
                   <Link
                     href={`/journal/${journalPost.slug}`}
                     className="btn-ghost"
                   >
-                    Read field journal
+                    Read blog
                   </Link>
                 ) : null}
               </div>
@@ -330,7 +319,7 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
           <div className="relative mx-auto grid max-w-7xl gap-10 px-5 md:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <AnimatedReveal>
               <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold">
-                Book this expedition
+                      Book this expedition
               </p>
               <h2 className="mt-4 font-display text-4xl font-semibold leading-tight text-parchment md:text-6xl">
                 Ready to go wild?
@@ -348,15 +337,6 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
                   className="btn-gold"
                 >
                   Book this expedition
-                </a>
-                <a
-                  href={bookingLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-ghost"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp
                 </a>
                 <a href={`mailto:${contact.email}`} className="btn-ghost">
                   <Mail className="h-4 w-4" />

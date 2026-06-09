@@ -20,7 +20,7 @@ export function ExpeditionsSection() {
     <section id="expeditions" className="section-shell bg-ink">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <SectionHeading
-          eyebrow="Featured adventures"
+          eyebrow="Featured expeditions"
           title="Choose your wild route."
           copy="Book immersive wildlife trips built around Jordan's most cinematic habitats, from protected desert safaris to after-dark reef dives."
         />
@@ -39,7 +39,7 @@ export function ExpeditionsSection() {
             SeaMonkey Wildlife.
           </p>
           <Link href="/adventures" className="btn-gold mt-4">
-            See More Adventures
+            See More Expeditions
           </Link>
         </div>
       </div>
