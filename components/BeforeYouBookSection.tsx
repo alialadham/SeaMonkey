@@ -1,12 +1,10 @@
 import Link from "next/link";
+import { Binoculars } from "lucide-react";
 import {
-  Binoculars,
-  CarFront,
-  Tent,
-} from "lucide-react";
-import {
+  CampIcon,
   DiveGogglesIcon,
   HikingGearIcon,
+  SafariIcon,
   SnorkelMaskIcon,
 } from "@/components/ActivityIcons";
 import { AnimatedReveal } from "@/components/AnimatedReveal";
@@ -19,7 +17,7 @@ const tripTypes = [
     slug: "arabian-oryx-photography-safari",
     label: "Arabian Oryx",
     description: "A vehicle safari shaped around Jordan's national animal.",
-    icon: CarFront,
+    icon: SafariIcon,
   },
   {
     slug: "hike-in-the-wild",
@@ -43,7 +41,7 @@ const tripTypes = [
     slug: "camp-in-the-wild",
     label: "Camp in the Wild",
     description: "An overnight camp with wild trails and field exploration.",
-    icon: Tent,
+    icon: CampIcon,
   },
   {
     slug: "water-buffalo-birdwatching-trek",
@@ -79,8 +77,8 @@ export function BeforeYouBookSection() {
                 className="rounded-[8px] border border-white/10 bg-white/[0.06] p-5 shadow-cinematic"
               >
                 <div className="flex items-start gap-4">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-[8px] bg-gold text-ink shadow-gold">
-                    <Icon className="h-5 w-5" />
+                  <div className="grid h-20 w-20 shrink-0 place-items-center rounded-[8px] bg-gold text-ink shadow-gold">
+                    <Icon className="h-[72px] w-[72px] scale-110" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-white">

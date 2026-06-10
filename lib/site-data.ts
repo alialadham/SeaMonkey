@@ -116,6 +116,7 @@ export const assets = {
   aboutHeroVideo: "/videos/seamonkey-about-hero.mp4",
   // Replace poster image with a compressed, owned hero still for production.
   heroPoster: "/assets/seamonkey/red-sea-coral.jpeg",
+  loaderBackground: "/assets/seamonkey/red-sea-turtle-wide.jpeg",
   aboutWalking: "/assets/seamonkey/azraq-wetland-boardwalk.jpeg",
   aboutPrimary: "/assets/seamonkey/water-buffalo-reeds.jpeg",
   aboutSecondary: "/assets/seamonkey/arabian-oryx-herd.jpeg",

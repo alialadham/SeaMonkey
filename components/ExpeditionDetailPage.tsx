@@ -98,7 +98,7 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
                   {expedition.location}
                 </span>
                 <span className="detail-pill">
-                  <TripIcon className="h-4 w-4" />
+                  <TripIcon className="h-14 w-14 scale-110 invert" />
                   {expedition.tripType}
                 </span>
                 <span className="detail-pill">
@@ -140,7 +140,13 @@ export function ExpeditionDetailPage({ expedition }: ExpeditionDetailPageProps) 
                   key={label}
                   className="rounded-[8px] border border-white/10 bg-white/[0.06] p-5 shadow-xl shadow-black/10"
                 >
-                  <Icon className="h-5 w-5 text-gold" />
+                  <Icon
+                    className={
+                      label === "Trip type"
+                        ? "h-16 w-16 scale-110 invert"
+                        : "h-5 w-5 text-gold"
+                    }
+                  />
                   <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-sand">
                     {label}
                   </p>

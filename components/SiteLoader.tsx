@@ -85,6 +85,15 @@ export function SiteLoader() {
           aria-live="polite"
           aria-label="SeaMonkey Wildlife loading"
         >
+          <Image
+            src={assets.loaderBackground}
+            alt=""
+            fill
+            sizes="100vw"
+            className="site-loader-background"
+            priority
+          />
+          <div className="site-loader-scrim" />
           <div className="site-loader-water" />
           <div className="site-loader-rays" />
           <div className="site-loader-particles" />
@@ -126,7 +135,7 @@ export function SiteLoader() {
               animate={{ opacity: 0.78, y: 0 }}
               transition={{ delay: 0.65, duration: 0.8, ease: "easeOut" }}
             >
-              Powered by Brandak
+              powered by Brandak
             </motion.p>
           </motion.div>
         </motion.div>

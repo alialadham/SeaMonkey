@@ -48,8 +48,10 @@ export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
             className="object-cover contrast-110 saturate-125 transition duration-700 group-hover:scale-[1.08]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/[0.18] to-transparent" />
-          <div className="absolute inset-x-4 bottom-4 flex translate-y-5 items-center gap-3 rounded-[8px] border border-white/15 bg-ink/[0.72] px-4 py-3 opacity-0 shadow-cinematic backdrop-blur-md transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-            <AccentIcon className="h-5 w-5" />
+          <div className="absolute inset-x-4 bottom-4 flex translate-y-5 items-center gap-4 rounded-[8px] border border-white/15 bg-ink/[0.72] px-4 py-3 opacity-0 shadow-cinematic backdrop-blur-md transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+            <span className="grid h-20 w-20 shrink-0 place-items-center rounded-[8px] border border-white/10 bg-white/[0.08]">
+              <AccentIcon className="h-[76px] w-[76px] scale-110 invert" />
+            </span>
             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
               {expeditionLabel}
             </span>
@@ -73,7 +75,7 @@ export function ExpeditionCard({ expedition, index }: ExpeditionCardProps) {
               {expedition.groupSize}
             </p>
             <p className="flex items-center gap-3">
-              <AccentIcon className="h-4 w-4 text-gold" />
+              <AccentIcon className="h-12 w-12 shrink-0 scale-110 invert" />
               {expedition.tripType}
             </p>
           </div>

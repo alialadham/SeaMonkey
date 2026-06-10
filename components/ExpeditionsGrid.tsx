@@ -88,13 +88,15 @@ export function ExpeditionsGrid({ expeditions }: ExpeditionsGridProps) {
               aria-label={`Filter by ${filter.label}`}
               title={filter.label}
               onClick={() => setActiveFilter(filter.label)}
-              className={`grid h-11 w-11 place-items-center rounded-[8px] border transition ${
+              className={`grid h-14 w-14 place-items-center rounded-[8px] border transition ${
                 active
                   ? "border-gold bg-gold text-ink shadow-gold"
                   : "border-white/15 bg-white/[0.06] text-parchment/70 hover:border-gold/50 hover:text-gold"
               }`}
             >
-              <FilterIcon className="h-5 w-5" />
+              <FilterIcon
+                className={`h-12 w-12 scale-110 ${active ? "" : "invert"}`}
+              />
             </button>
           );
         })}
@@ -120,8 +122,8 @@ export function ExpeditionsGrid({ expeditions }: ExpeditionsGridProps) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/[0.18] to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-                      <ActivityIcon className="h-4 w-4" />
+                    <p className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+                      <ActivityIcon className="h-14 w-14 shrink-0 scale-110 invert" />
                       {expedition.tripType}
                     </p>
                     <h2 className="mt-2 font-display text-3xl font-semibold leading-tight text-white">

@@ -23,7 +23,7 @@ type WildlifeGalleryProps = {
 };
 
 export function WildlifeGallery({ preview = false }: WildlifeGalleryProps) {
-  const items = preview ? galleryItems.slice(0, 4) : galleryItems;
+  const items = preview ? galleryItems.slice(0, 5) : galleryItems;
 
   return (
     <section id="gallery" className="section-shell relative bg-ocean">

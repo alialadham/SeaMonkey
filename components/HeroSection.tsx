@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, Compass, Play } from "lucide-react";
+import { ArrowDown, Compass } from "lucide-react";
 import Link from "next/link";
 import { assets } from "@/lib/site-data";
 
@@ -77,10 +77,6 @@ export function HeroSection() {
               className="btn-gold"
             >
               Book Your Trip
-            </Link>
-            <Link href="/adventures" className="btn-ghost">
-              <Play className="h-4 w-4" />
-              View Expeditions
             </Link>
           </motion.div>
         </div>

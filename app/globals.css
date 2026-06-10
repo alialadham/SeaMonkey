@@ -116,12 +116,24 @@ video {
     @apply fixed inset-0 z-[9999] grid place-items-center overflow-hidden bg-ink text-parchment;
   }
 
-  .site-loader-water {
-    @apply absolute inset-0 opacity-90;
+  .site-loader-background {
+    @apply absolute inset-0 h-full w-full object-cover opacity-75;
+    filter: saturate(1.1) contrast(1.08);
+  }
+
+  .site-loader-scrim {
+    @apply absolute inset-0;
     background:
-      radial-gradient(circle at 50% 42%, rgba(200, 155, 74, 0.16), transparent 24%),
+      radial-gradient(circle at 50% 42%, rgba(200, 155, 74, 0.14), transparent 26%),
+      linear-gradient(90deg, rgba(3, 25, 35, 0.86), rgba(5, 5, 5, 0.48) 52%, rgba(3, 25, 35, 0.82)),
+      linear-gradient(0deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.24) 48%, rgba(5, 5, 5, 0.76));
+  }
+
+  .site-loader-water {
+    @apply absolute inset-0 opacity-45;
+    background:
       radial-gradient(circle at 18% 22%, rgba(26, 156, 181, 0.2), transparent 28%),
-      linear-gradient(155deg, #020d15 0%, #062b3f 46%, #031923 100%);
+      linear-gradient(155deg, rgba(2, 13, 21, 0.7) 0%, rgba(6, 43, 63, 0.35) 46%, rgba(3, 25, 35, 0.72) 100%);
     animation: loader-water 7.4s ease-in-out infinite alternate;
   }
 
@@ -177,7 +189,7 @@ video {
   }
 
   .site-loader-powered {
-    @apply mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-sand/80;
+    @apply mt-6 text-xs font-semibold tracking-[0.08em] text-sand/80;
   }
 }
 
